@@ -13,4 +13,16 @@ const getAll = async (req, res) => {
   }
 };
 
-export default { getAll };
+/*********** create ****************/
+const create = async (req, res) => {
+  const { name, desc } = req.body;
+  let videosPaths = [];
+
+  if (Array.isArray(req.files.videos) && req.files.videos.length > 0) {
+    for (let videos of req.files.videos) {
+      videosPaths.push("/" + videos.path);
+    }
+  }
+};
+
+export default { getAll, create };
