@@ -2,7 +2,7 @@
 import bcrypt from "bcryptjs";
 import _ from "lodash";
 import jwt from "jsonwebtoken";
-import UserSchema from "../Schema/UserDetails";
+import UserSchema from "../Schema/UserDetails.js";
 // constants
 const JWT_SECRET =
   "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";

@@ -7,7 +7,8 @@ dotenv.config();
 
 /*********** helpers **************/
 
-import authenticationRoutes from "./src/Routes/authenticationRoutes";
+// import authenticationRoutes from "./src/Routes/authenticationRoutes.js";
+import authenticationRoutes from "./src/Routes/authenticationRoutes.js";
 
 /********** constants ********/
 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use("/auth", authenticationRoutes);
 
 /********** server ***********/
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

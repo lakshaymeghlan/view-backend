@@ -1,9 +1,6 @@
-// npm modules
 import express from "express";
 import _ from "lodash";
-
-//controllers
-import authCtrl from "../Controllers/Authentication";
+import authCtrl from "../Controller/Authentication.js";
 
 const router = express.Router();
 
