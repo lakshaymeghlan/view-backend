@@ -1,4 +1,3 @@
-// npm modules
 import bcrypt from "bcryptjs";
 import _ from "lodash";
 import jwt from "jsonwebtoken";
