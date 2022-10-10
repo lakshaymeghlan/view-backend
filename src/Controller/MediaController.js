@@ -3,24 +3,12 @@ import _ from "lodash";
 // const upload = require("../Helpers/media");
 import upload from "../Helpers/media.js";
 let host = "http://localhost:8000/videos/";
+
 /*********** get all ****************/
-
-// const getAll = async (req, res) => {
-//   try {
-//     const media = await Media.find();
-//     res.json(media);
-//   } catch (error) {
-//     console.log(error);
-//     res.send(400).json(error);
-//   }
-// };
-
-export const getAll = async (req, res) => {
-  const { id: _id } = req.params;
+const getAll = async (req, res) => {
   try {
-    const media = await Media.findById(_id);
-    // const pic = await media.profilePicture;
-    res.status(200).json(pic);
+    const media = await Media.find();
+    res.json(media);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -33,14 +21,11 @@ const create = async (req, res) => {
     console.log(req.file);
     const { name, desc } = req.body;
     if (req.file) {
-      // for (let videos of req.files) {
-      //   videosPaths.push("/" + videos.path);
-      // }
       videosPaths.push(`${host}${req.file.filename}`);
     } else {
       console.log("----->path");
     }
-    console.log(videosPaths);
+    // console.log(req);
     try {
       const createMedia = await Media.create({
         name,
