@@ -5,13 +5,24 @@ import upload from "../Helpers/media.js";
 let host = "http://localhost:8000/videos/";
 /*********** get all ****************/
 
-const getAll = async (req, res) => {
+// const getAll = async (req, res) => {
+//   try {
+//     const media = await Media.find();
+//     res.json(media);
+//   } catch (error) {
+//     console.log(error);
+//     res.send(400).json(error);
+//   }
+// };
+
+export const getAll = async (req, res) => {
+  const { id: _id } = req.params;
   try {
-    const media = await Media.find();
-    res.json(media);
+    const media = await Media.findById(_id);
+    // const pic = await media.profilePicture;
+    res.status(200).json(pic);
   } catch (error) {
-    console.log(error);
-    res.send(400).json(error);
+    res.status(404).json({ message: error.message });
   }
 };
 
