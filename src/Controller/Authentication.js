@@ -9,7 +9,7 @@ const JWT_SECRET =
 /**********************************  REGISTER  *************************************************/
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   const encryptedPassword = await bcrypt.hash(password, 10);
   console.log("encrypted Password", encryptedPassword);
@@ -22,7 +22,7 @@ const register = async (req, res) => {
     }
     console.log("existing user not found creating new");
     const newUser = await UserSchema.create({
-      name,
+      username,
       email,
       password: encryptedPassword,
     });
