@@ -40,4 +40,14 @@ const create = async (req, res) => {
   });
 };
 
-export default { getAll, create };
+/*********** get single ****************/
+const getOne = async (req, res) => {
+  try {
+    const media = await Media.findById();
+    res.json(media);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export default { getAll, create, getOne };

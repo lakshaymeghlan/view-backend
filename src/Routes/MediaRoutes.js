@@ -39,6 +39,7 @@ const router = express.Router();
 //get all media
 router.get("/all", mediaCtrl.getAll);
 router.post("/create", mediaCtrl.create);
+router.get("/get/:id", mediaCtrl.getOne);
 // upload.fields([{ name: "videos" }]),
 
 export default router;
