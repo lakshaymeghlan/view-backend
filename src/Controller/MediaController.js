@@ -43,7 +43,8 @@ const create = async (req, res) => {
 /*********** get single ****************/
 const getOne = async (req, res) => {
   try {
-    const media = await Media.findById();
+    const id = req.params.id;
+    const media = await Media.findById(id);
     res.json(media);
   } catch (error) {
     res.status(404).json({ message: error.message });
