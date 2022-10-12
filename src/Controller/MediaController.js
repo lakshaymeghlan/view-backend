@@ -19,7 +19,8 @@ const create = async (req, res) => {
   let videosPaths = [];
   let video_upload = await upload(req, res, async function () {
     console.log(req.file);
-    const { name, desc } = req.body;
+    const { name, desc, userName, email, img } = req.body;
+    // console.log(req.body);
     if (req.file) {
       videosPaths.push(`${host}${req.file.filename}`);
     } else {
@@ -31,6 +32,9 @@ const create = async (req, res) => {
         name,
         desc,
         videos: videosPaths,
+        userName,
+        email,
+        img,
       });
       res.json({ message: "Media created successfully", createMedia });
     } catch (error) {
