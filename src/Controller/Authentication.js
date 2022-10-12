@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import _ from "lodash";
 import jwt from "jsonwebtoken";
 import UserSchema from "../Schema/UserDetails.js";
+import Media from "../Schema/MediaSchema.js";
 // constants
 const JWT_SECRET =
   "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
@@ -26,6 +27,10 @@ const register = async (req, res) => {
       email,
       password: encryptedPassword,
     });
+
+    // let newMedia = new Media({ userID: newUser._id });
+    // newMedia = await newMedia.save();
+
     console.log("new user created");
     return res.send({ status: "user created", newUser });
   } catch (error) {
