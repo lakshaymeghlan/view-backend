@@ -55,4 +55,15 @@ const getOne = async (req, res) => {
   }
 };
 
-export default { getAll, create, getOne };
+/************** get all videos of particular user *****************/
+
+const getByUser = async (req, res) => {
+  try {
+    const media = await Media.findById(email);
+    res.json(media);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+export default { getAll, create, getOne, getByUser };
