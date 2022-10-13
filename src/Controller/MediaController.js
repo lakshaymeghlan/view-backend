@@ -58,13 +58,16 @@ const getOne = async (req, res) => {
 /************** get all videos of particular user *****************/
 
 const getByUser = async (req, res) => {
+  const data = req.params.id;
   try {
-    const all = await Media.find();
-    const email = req.body.email;
-    const required = all.filter((item) => item.email === email);
-    res.json(required);
+    const result = await Media.findById(data);
+    const email = result.email;
+    const userImage = result.img;
+    const media = await Media.find({ email: { $in: [email] } });
+    // console.log(media);
+    res.status(200).json({ userImage: userImage, data: media });
   } catch (error) {
-    res.send(error);
+    res.status(500).send(error);
   }
 };
 
