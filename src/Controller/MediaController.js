@@ -59,8 +59,10 @@ const getOne = async (req, res) => {
 
 const getByUser = async (req, res) => {
   try {
-    const media = await Media.findById(email);
-    res.json(media);
+    const all = await Media.find();
+    const email = req.body.email;
+    const required = all.filter((item) => item.email === email);
+    res.json(required);
   } catch (error) {
     res.send(error);
   }
